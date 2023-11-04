@@ -1,58 +1,65 @@
-import { Component } from 'react';
 import css from './ContactForm.module.css';
+import { useState } from 'react';
 
-export class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
+export const ContactForm = ({ handleAddContact }) => {
+  // state = {
+  //   name: '',
+  //   number: '',
+  // };
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  const handleChange = evt => {
+    // this.setState({ [evt.target.name]: evt.target.value });
+    if (evt.target.name === 'name') {
+      setName(evt.target.value);
+    } else if (evt.target.name === 'number') {
+      setNumber(evt.target.value);
+    }
   };
 
-  handleChange = evt => {
-    this.setState({ [evt.target.name]: evt.target.value });
+  const resetForm = () => {
+    // this.setState({ name: '', number: '' });
+    setName('');
+    setNumber('');
   };
 
-  resetForm = () => {
-    this.setState({ name: '', number: '' });
-  };
+  const handleSubmit = evt => {
+    // evt.preventDefault();
+    // const { name, number } = this.state;
 
-  handleSubmit = evt => {
+    // this.props.handleAddContact(name, number, this.resetForm);
     evt.preventDefault();
-    const { name, number } = this.state;
-
-    this.props.handleAddContact(name, number, this.resetForm);
+    handleAddContact(name, number, resetForm);
   };
 
-  render() {
-    const { name, number } = this.state;
-
-    return (
-      <form onSubmit={this.handleSubmit} className={css.form}>
-        <input
-          className={css.input}
-          type="text"
-          name="name"
-          placeholder="Enter name"
-          required
-          value={name}
-          onChange={this.handleChange}
-          pattern="^[A-Za-zА-Яа-яЇїІі\s]+$"
-          title="You can enter only letters of the Latin and Cyrillic alphabets, as well as spaces."
-        />
-        <input
-          className={css.input}
-          type="tel"
-          name="number"
-          placeholder="Enter number"
-          required
-          value={number}
-          onChange={this.handleChange}
-          pattern="^(\+?\d+){5,12}$"
-          title="Phone number must start with '+' (optional) and contain only digits. Length: 5-12 characters."
-        />
-        <button type="submit" className={css.button}>
-          Add contact
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit} className={css.form}>
+      <input
+        className={css.input}
+        type="text"
+        name="name"
+        placeholder="Enter name"
+        required
+        value={name}
+        onChange={handleChange}
+        pattern="^[A-Za-zА-Яа-яЇїІі\s]+$"
+        title="You can enter only letters of the Latin and Cyrillic alphabets, as well as spaces."
+      />
+      <input
+        className={css.input}
+        type="tel"
+        name="number"
+        placeholder="Enter number"
+        required
+        value={number}
+        onChange={handleChange}
+        pattern="^(\+?\d+){5,12}$"
+        title="Phone number must start with '+' (optional) and contain only digits. Length: 5-12 characters."
+      />
+      <button type="submit" className={css.button}>
+        Add contact
+      </button>
+    </form>
+  );
+};
