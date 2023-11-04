@@ -1,0 +1,38 @@
+.wrapper {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  min-width: 500px;
+  padding: 30px;
+  background-color: rgba(0, 255, 255, 0.178);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(24, 129, 129, 0.349);
+  min-height: 70vh;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  color: rgb(41, 0, 0);
+  background-color: rgba(10, 85, 151, 0.116);
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+.subtitle {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  color: rgb(41, 0, 0);
+  background-color: rgba(10, 85, 151, 0.116);
+  padding: 5px 15px;
+  border-radius: 10px;
+}
